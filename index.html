@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оброзование.ру</title>
+    <link rel="icon" href="./img/icons8-castle-64.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/style.css">
+    <script defer src="./assets/news.js"></script>
+    <script defer src="./assets/enroll.js"></script>
+</head>
+<body>
+    <div class="modal-bg" onclick="closing()"></div>
+    <div class="modal">
+        <form id="contact" class="card1" style="background: rgb(144, 144, 144, 0.9);">
+            <input name="fio" placeholder="ФИО" style="padding-top: 20px;" required>
+            <input name="phone" placeholder="Телефон" type="tel" required>
+            <input name="email" placeholder="Почта" type="email" required>
+            <button type="submit">Получить консультацию</button>
+        </form>
+    </div>
+    <div class="modal-good">
+        <div class="card1" style="background: rgb(144, 144, 144, 0.9); width: 650px; height: 383px; display: flex; align-items: center; justify-content: center;">
+            <h1>Заявка отправлена !</h1>
+        </div>
+    </div>
+    <header>
+        <div class="wrapper">
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <img src="./img/icons8-education-50.png" class="logo" alt="">
+                <p class="logo-p">Оброзование.ру</p>
+            </div>
+            <a class="f" href="./aboutus.html">О нас</a>
+            <a class="f" href="./contacts.html">Контакты</a>
+            <a class="f" href="./news.html">Новости</a>
+            <a class="f" onclick="modal()">Поступить</a>
+            <div class="social-network">
+                <a target="_blank" href="https://telegram.org/"><img src="./img/icons8-telegram-app-48.png" class="l-img" alt=""></a>
+                <a target="_blank" href="https://www.youtube.com/"><img src="./img/icons8-youtube-50.png" class="r-img" alt=""></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <img src="./img/bg.jpg" class="main-img">
+        <h1 class="title">Открываем таланты, раскрываем потенциал.</h1>
+        <div class="wrapper" style="margin-bottom: 80px;">
+            <div class="info">
+                <div class="wrapper1">
+                    <h1>40 000</h1>
+                    <p>Обучающихся</p>
+                </div>
+                <img src="./img/icons8-schoolboy-at-a-desk-100.png" alt="">
+            </div>
+            <div class="info">
+                <div class="wrapper1">
+                    <h1>100</h1>
+                    <p>Преподователей</p>
+                </div>
+                <img src="./img/icons8-training-100.png" alt="">
+            </div>
+            <div class="info">
+                <div class="wrapper1">
+                    <h1>2 000</h1>
+                    <p>Классов</p>
+                </div>
+                <img src="./img/icons8-classroom-100.png" alt="">
+            </div>
+        </div>
+        <div class="separator"></div>
+        <h1 class="title">Наши партнёры</h1>
+        <div class="wrapper" style="margin-bottom: 80px;">
+            <div class="info">
+                <img src="./img/icons8-it-100.png" alt="">
+                <h1>ITProject</h1>
+            </div>
+            <div class="info">
+                <img src="./img/icons8-bank-building-100.png" alt="">
+                <h1>Bank</h1>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <h1 class="title">Новости</h1>
+        <div class="news-section">
+            <div class="news-carousel">
+                <button class="carousel-btn prev" onclick="scrollNews(-1)">‹</button>
+                <div class="news-track" id="newsTrack">
+                    <a href="./news.html" class="news-card" style="min-width: 280px;">
+                        <img src="./img/news.png" class="news-img" alt="">
+                        <div class="news-text">
+                            <h3>Обновление компьютеров</h3>
+                            <p>Сегодня обновили компьютерный класс</p>
+                            <span class="read-more">Подробнее...</span>
+                        </div>
+                    </a>
+                    <a href="./news.html" class="news-card" style="min-width: 280px;">
+                        <img src="./img/news1.jpg" class="news-img" alt="">
+                        <div class="news-text">
+                            <h3>Поступление новых учеников</h3>
+                            <p>Поступило 200 учеников</p>
+                            <span class="read-more">Подробнее...</span>
+                        </div>
+                    </a>
+                    <a href="./news.html" class="news-card" style="min-width: 280px;">
+                        <img src="./img/news2.jpg" class="news-img" alt="">
+                        <div class="news-text">
+                            <h3>Победа в олимпиаде</h3>
+                            <p>Наши студенты одержали блестящую победу</p>
+                            <span class="read-more">Подробнее...</span>
+                        </div>
+                    </a>
+                    <a href="./news.html" class="news-card" style="min-width: 280px;">
+                        <img src="./img/news.png" class="news-img" alt="">
+                        <div class="news-text">
+                            <h3>Обновление компьютеров</h3>
+                            <p>Сегодня обновили компьютерный класс</p>
+                            <span class="read-more">Подробнее...</span>
+                        </div>
+                    </a>
+                    <a href="./news.html" class="news-card" style="min-width: 280px;">
+                        <img src="./img/news1.jpg" class="news-img" alt="">
+                        <div class="news-text">
+                            <h3>Поступление новых учеников</h3>
+                            <p>Поступило 200 учеников</p>
+                            <span class="read-more">Подробнее...</span>
+                        </div>
+                    </a>
+                    <a href="./news.html" class="news-card" style="min-width: 280px;">
+                        <img src="./img/news2.jpg" class="news-img" alt="">
+                        <div class="news-text">
+                            <h3>Победа в олимпиаде</h3>
+                            <p>Наши студенты одержали блестящую победу</p>
+                            <span class="read-more">Подробнее...</span>
+                        </div>
+                    </a>
+                </div>
+                <button class="carousel-btn next" onclick="scrollNews(1)">›</button>
+            </div>
+            <div class="news-counter" id="newsCounter">1 / 6</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Оброзование.ру @2008-2025</p>
+        <div class="wrapper">
+            <p class="change">Icons by</p>
+            <a target="_blank" href="https://icons8.com/">Icons8</a>
+        </div>
+    </footer>
+</body>
+</html>

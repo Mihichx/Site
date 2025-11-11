@@ -1,0 +1,37 @@
+/* Локальные шрифты */
+
+@font-face {
+    font-family: 'Noto Serif KR';
+    src: url('./noto-serif-kr-regular.woff2') format('woff2'),
+         url('./noto-serif-kr-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Noto Serif KR';
+    src: url('./noto-serif-kr-bold.woff2') format('woff2'),
+         url('./noto-serif-kr-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./inter-regular.woff2') format('woff2'),
+         url('./inter-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./inter-medium.woff2') format('woff2'),
+         url('./inter-medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
