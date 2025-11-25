@@ -2,26 +2,7 @@ elem = document.querySelector(".modal-bg");
 elem1 = document.querySelector(".modal");
 elem2 = document.querySelector(".modal-good");
 
-const contactForm = document.getElementById('contact');
-let userList = [];
-
-if (contactForm) {
-    contactForm.addEventListener("submit", readForm);
-}
-
-function readForm(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-
-    user = {};
-    for (let pair of formData.entries()) { 
-        user[pair[0]] = pair[1];
-    }
-
-    userList.push(user);
-    console.log(userList);
-    
-    // Показать сообщение об успехе
+function send() {
     elem1.classList.remove("display");
     elem2.classList.add("display");
     setTimeout(() => elem2.classList.remove("display"), 1500);
