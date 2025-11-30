@@ -7,6 +7,7 @@ function send() {
     elem2.classList.add("display");
     setTimeout(() => elem2.classList.remove("display"), 1500);
     setTimeout(() => elem.classList.remove("display"), 1500);
+    return false; // Предотвращает отправку формы
 }
 
 function modal() {
