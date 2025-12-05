@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оброзование.ру</title>
+    <title>Образование.ру</title>
     <link rel="icon" href="./img/icons8-castle-64.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/style.css">
     <script defer src="./assets/enroll.js"></script>
 </head>
 <body>
     <div class="modal-bg" onclick="closing()"></div>
+    <div class="modal-bg-catalog" onclick="closing_catalog()"></div>
     <div class="modal">
         <form id="contact" class="card1" style="background: rgb(144, 144, 144, 0.9);">
             <input name="fio" placeholder="ФИО" style="padding-top: 20px;" required>
@@ -19,7 +20,7 @@
         </form>
     </div>
     <div class="modal-good">
-        <div class="card1" style="background: rgb(144, 144, 144, 0.9); align-items: center;">
+        <div>
             <h1>Заявка отправлена !</h1>
         </div>
     </div>
@@ -27,9 +28,16 @@
         <div class="wrapper">
             <div style="display: flex; flex-direction: row; align-items: center;">
                 <img src="./img/icons8-education-50.png" class="logo" alt="">
-                <p class="logo-p">Оброзование.ру</p>
+                <p class="logo-p">Образование.ру</p>
             </div>
-            <a class="f" href="./aboutus.html">О нас</a>
+            <div class="wrapper-aboutus">
+                <a class="f" onclick="open_catalog()" style="display: flex; align-items: center;">О нас<img src="./img/icons8-sort-down-30.png" alt="" style="width: 15px; margin-left: 5px;"></a>
+                <div class="dropdown-content">
+                    <a href="./aboutus.html" onclick="closing_catalog()">История</a>
+                    <a href="#" onclick="closing_catalog()">Специальности</a>
+                    <a href="#" onclick="closing_catalog()">Партнёры</a>
+                </div>
+            </div>
             <a class="f active">Контакты</a>
             <a href="./index.html"><img src="./img/icons8-castle-64.png" class="home"></a>
             <a class="f" href="./news.html">Новости</a>
@@ -41,7 +49,7 @@
         </div>
     </header>
 
-    <main class="exception1">
+    <main class="exception2">
         <div class="grid">
             <div class="card">
                 <h1>
@@ -89,7 +97,7 @@
                     </h3>
                 </div>
             </div>
-            <div class="card" style="background: linear-gradient(180deg, rgba(217, 217, 217, 0.28) 0%, rgba(130, 130, 130, 0.51) 100%);">
+            <div class="card">
                 <h1>
                     Дистанционное обучение
                 </h1>
@@ -112,7 +120,7 @@
                     </h3>
                 </div>
             </div>
-            <div class="card" style="background: linear-gradient(180deg, rgba(217, 217, 217, 0.28) 0%, rgba(130, 130, 130, 0.51) 100%);">
+            <div class="card">
                 <h1>
                     Дополнительное образование
                 </h1>
@@ -139,7 +147,7 @@
     </main>
 
     <footer>
-        <p>Оброзование.ру @2008-2025</p>
+        <p>Образование.ру @2008-2025</p>
         <div class="wrapper">
             <p class="change">Icons by</p>
             <a target="_blank" href="https://icons8.com/">Icons8</a>

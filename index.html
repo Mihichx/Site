@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оброзование.ру</title>
+    <title>Образование.ру</title>
     <link rel="icon" href="./img/icons8-castle-64.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/style.css">
     <script defer src="./assets/news.js"></script>
@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="modal-bg" onclick="closing()"></div>
+    <div class="modal-bg-catalog" onclick="closing_catalog()"></div>
     <div class="modal">
         <form id="contact" class="card1" style="background: rgb(144, 144, 144, 0.9);">
             <input name="fio" placeholder="ФИО" style="padding-top: 20px;" required>
@@ -21,17 +22,25 @@
         </form>
     </div>
     <div class="modal-good modal">
-        <div class="card1" style="background: rgb(144, 144, 144, 0.9); align-items: center;">
+        <div>
             <h1>Заявка отправлена !</h1>
         </div>
     </div>
+
     <header>
         <div class="wrapper">
             <div style="display: flex; flex-direction: row; align-items: center;">
                 <img src="./img/icons8-education-50.png" class="logo" alt="">
-                <p class="logo-p">Оброзование.ру</p>
+                <p class="logo-p">Образование.ру</p>
             </div>
-            <a class="f" href="./aboutus.html">О нас</a>
+            <div class="wrapper-aboutus">
+                <a class="f" onclick="open_catalog()" style="display: flex; align-items: center;">О нас<img src="./img/icons8-sort-down-30.png" alt="" style="width: 15px; margin-left: 5px;"></a>
+                <div class="dropdown-content">
+                    <a href="./aboutus.html" onclick="closing_catalog()">История</a>
+                    <a href="#" onclick="closing_catalog()">Специальности</a>
+                    <a href="#" onclick="closing_catalog()">Партнёры</a>
+                </div>
+            </div>
             <a class="f" href="./contacts.html">Контакты</a>
             <a class="f" href="./news.html">Новости</a>
             <a class="f" onclick="modal()">Поступить</a>
@@ -82,15 +91,15 @@
         </div>
         <div class="separator"></div>
         <h1 class="title">Наши специальности</h1>
-        <div class="wrapper" style="margin-bottom: 80px;">
+        <div class="wrapper" style="margin-bottom: 80px; flex-direction: column;">
             <div class="info">
-                <h1>Программирование</h1>
+                <h1 class="marginX">1.Программирование</h1>
             </div>
             <div class="info">
-                <h1>Графический дизайн</h1>
+                <h1 class="marginX">2.Графический дизайн</h1>
             </div>
             <div class="info">
-                <h1>Информационная безопасность</h1>
+                <h1 class="marginX">3.Информационная безопасность</h1>
             </div>
         </div>
         <div class="separator"></div>
@@ -124,26 +133,26 @@
                         </div>
                     </a>
                     <a href="./news.html" class="news-card" style="min-width: 280px;">
-                        <img src="./img/news.jpg" class="news-img" alt="">
+                        <img src="./img/news3.jpg" class="news-img" alt="">
                         <div class="news-text">
-                            <h3>Обновление компьютеров</h3>
-                            <p>Сегодня обновили компьютерный класс</p>
+                            <h3>Зелёный десант в деле</h3>
+                            <p>Ребята из старших классов помогали высаживать</p>
                             <span class="read-more">Подробнее...</span>
                         </div>
                     </a>
                     <a href="./news.html" class="news-card" style="min-width: 280px;">
-                        <img src="./img/news1.jpg" class="news-img" alt="">
+                        <img src="./img/news4.jpg" class="news-img" alt="">
                         <div class="news-text">
-                            <h3>Поступление новых учеников</h3>
-                            <p>Поступило 200 учеников</p>
+                            <h3>Триумф наших Айтишников</h3>
+                            <p>Жюри высоко оценило оригинальность идеи</p>
                             <span class="read-more">Подробнее...</span>
                         </div>
                     </a>
                     <a href="./news.html" class="news-card" style="min-width: 280px;">
-                        <img src="./img/news2.jpg" class="news-img" alt="">
+                        <img src="./img/news5.jpg" class="news-img" alt="">
                         <div class="news-text">
-                            <h3>Победа в олимпиаде</h3>
-                            <p>Наши студенты одержали блестящую победу</p>
+                            <h3>Навстречу реальным проектам</h3>
+                            <p>Основная цель проекта — сократить разрыв между академическим образованием</p>
                             <span class="read-more">Подробнее...</span>
                         </div>
                     </a>
@@ -155,7 +164,7 @@
     </main>
 
     <footer>
-        <p>Оброзование.ру @2008-2025</p>
+        <p>Образование.ру @2008-2025</p>
         <div class="wrapper">
             <p class="change">Icons by</p>
             <a target="_blank" href="https://icons8.com/">Icons8</a>
