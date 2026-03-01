@@ -4,6 +4,20 @@
 
     $login = $_SESSION['temp_login'] ?? '';
     $pass = $_SESSION['temp_pass'] ?? '';
+    $current_id = $_POST['id'] ?? $_GET['id'] ?? '';
+    $current_img = $_POST['img'] ?? $_GET['img'] ?? '';
+    
+    $query_params = "";
+    if ($current_id !== '' && $current_img !== '') {
+        $query_params = "?id=" . urlencode($current_id) . "&img=" . urlencode($current_img);
+    }
+
+    function update_error($name_error) {
+        global $query_params;
+        $_SESSION['error'] = $name_error;
+        header("Location: " . $_SERVER['PHP_SELF'] . $query_params);
+        exit();
+    }
 
     if (isset($_SESSION['error'])) {
         $err = $_SESSION['error'];
@@ -43,15 +57,11 @@
             mysqli_stmt_close($check_stmt);
 
             if ($user_exists > 0) {
-                $_SESSION['error'] = "Логин '$new_login' уже занят";
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit();
+                update_error("Логин '$new_login' уже занят");
             }
 
             if ($new_pass !== $_POST['password_repeat']) {
-                $_SESSION['error'] = "Пароли не совпадают";
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit(); 
+                update_error("Пароли не совпадают");
             }
 
             $query = "INSERT INTO users (login, password) VALUES (?, ?)";
@@ -61,15 +71,13 @@
                 mysqli_stmt_bind_param($stmt, "ss", $_POST['login'], $_POST['password']);
                 
                 if (mysqli_stmt_execute($stmt)) {
-                    header("Location: " . $_SERVER['PHP_SELF'] . "?success=1");
+                    header("Location: " . $_SERVER['PHP_SELF'] . $query_params . "&success=1");
                     exit(); 
                 }
                 mysqli_stmt_close($stmt);
             }
         } else {
-            $_SESSION['error'] = "Заполните все поля!  ";
-            header("Location: " . $_SERVER['PHP_SELF']);
-            exit(); 
+            update_error("Заполните все поля!  ");
         }
     }
 
@@ -84,15 +92,13 @@
                 mysqli_stmt_bind_param($stmt1, "sss", $_POST['fio'], $_POST['phone'], $_POST['email']);
                 
                 if (mysqli_stmt_execute($stmt1)) {
-                    header("Location: " . $_SERVER['PHP_SELF'] . "?success=1");
+                    header("Location: " . $_SERVER['PHP_SELF'] . $query_params . "&success=1");
                     exit(); 
                 }
                 mysqli_stmt_close($stmt1);
             }
         } else {
-            $_SESSION['error'] = "Заполните все поля! ";
-            header("Location: " . $_SERVER['PHP_SELF']); 
-            exit;
+            update_error("Заполните все поля! ");
         }
     }
 
@@ -114,7 +120,7 @@
                     $_SESSION['user_name'] = $user['login'];
                     $_SESSION['auth_success'] = true;
                     
-                    header('Location: login.php');
+                    header('Location: login.php') . $query_params;
                     exit;
                 } else {
                     $_SESSION['error'] = "Неверный пароль или логин!";
@@ -125,8 +131,7 @@
         } else {
             $_SESSION['error'] = "Заполните все поля!";
         }
-
-        header("Location: " . $_SERVER['PHP_SELF']); 
+        header("Location: " . $_SERVER['PHP_SELF'] . $query_params); 
         exit;
     }
 ?>
@@ -136,6 +141,8 @@
 
 <div class="modal <?= isset($of_error) ? 'active' : '' ?>">
     <form action="" method="POST" id="contact" class="card1" style="background: rgb(144, 144, 144, 0.9);">
+        <input type="hidden" name="id" value="<?= $current_id ?>">
+        <input type="hidden" name="img" value="<?= $current_img ?>">
         <input name="fio" placeholder="ФИО" style="padding-top: 20px;">
         <input name="phone" placeholder="Телефон" type="tel">
         <input name="email" placeholder="Почта" type="email">
@@ -146,6 +153,8 @@
 
 <div class="modal1 <?= isset($login_error) ? 'active' : '' ?>">
     <form action="" method="POST" id="contact" class="card1" style="background: rgb(144, 144, 144, 0.9);">
+        <input type="hidden" name="id" value="<?= $current_id ?>">
+        <input type="hidden" name="img" value="<?= $current_img ?>">
         <input name="login1" placeholder="Логин" style="padding-top: 20px;">
         <input name="password1" placeholder="Пароль" type="password">
         <?php if(isset($login_error)) echo "<p class='error' style='color:red; text-align:center;'>$login_error</p>"; ?>
@@ -156,6 +165,8 @@
 
 <div class="modal2 <?= isset($reg_error) ? 'active' : '' ?>">
     <form action="" method="POST" id="contact" class="card1" style="background: rgb(144, 144, 144, 0.9);">
+        <input type="hidden" name="id" value="<?= $current_id ?>">
+        <input type="hidden" name="img" value="<?= $current_img ?>">
         <a class="hover" style="margin-top: 20px; font-size: 30px">Регистрация</a>
         <input name="login" placeholder="Логин" style="padding-top: 20px;" value="<?= htmlspecialchars($login) ?>">
         <input id="pass" name="password" placeholder="Пароль" type="password" value="<?= htmlspecialchars($pass) ?>">
