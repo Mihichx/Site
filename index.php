@@ -63,17 +63,17 @@
                 <button class="carousel-btn prev" onclick="scrollNews(-1)">‹</button>
                     <div class="news-track" id="newsTrack">
                         <?php
-                            for ($i = $quantity_news - 1; $i >= 0; $i--):
+                            foreach ($news as $key => $news):
                         ?>  
-                            <a href="./news1.php?id=<?= $news[$i]['id'] ?>&img=<?= $i ?>" class="news-card" style="min-width: 280px;">
-                                <img src="./template/default/img/news<?= $i ?>.jpg" class="news-img" alt="">
+                            <a href="./news1.php?id=<?= $news['id'] ?>&img=<?= $news['id'] ?>" class="news-card" style="min-width: 280px;">
+                                <img src="./template/default/img/news<?= $news['id'] ?>.jpg" class="news-img" alt="">
                                 <div class="news-text">
-                                    <h3><?= $news[$i]['title'] ?></h3>
-                                        <p><?= $news[$i]['cropped_description_index'] ?></p>
+                                    <h3><?= $news['title'] ?></h3>
+                                        <p><?= $news['cropped_description'] ?></p>
                                         <span class="read-more">Подробнее...</span>
                                 </div>
                             </a>
-                        <?php endfor; ?>
+                        <?php endforeach; ?>
                     </div>
                 <button class="carousel-btn next" onclick="scrollNews(1)">›</button>
             </div>

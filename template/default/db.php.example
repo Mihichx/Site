@@ -8,7 +8,7 @@
 
 
 	/* Новости */
-	$query_news = 'SELECT * FROM news';
+	$query_news = 'SELECT * FROM news ORDER BY id DESC';
 	$result_news = mysqli_query($link, $query_news);
 	$news = mysqli_fetch_all($result_news, MYSQLI_ASSOC);
 	$quantity_news = count($news);
