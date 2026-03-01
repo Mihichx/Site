@@ -1,0 +1,42 @@
+<?php
+	$host = 'your_host';          // имя хоста
+	$user = 'your_username';      // имя пользователя
+	$pass = 'your_password';      // пароль
+	$name = 'your_db_name';       // имя базы данных
+	$link = mysqli_connect($host, $user, $pass, $name);
+	mysqli_query($link, "SET NAMES 'utf8'");
+
+
+	/* Новости */
+	$query_news = 'SELECT * FROM news';
+	$result_news = mysqli_query($link, $query_news);
+	$news = mysqli_fetch_all($result_news, MYSQLI_ASSOC);
+	$quantity_news = count($news);
+
+
+	/* Партнёры */
+	$query_partners = 'SELECT * FROM partners';
+	$result_partners = mysqli_query($link, $query_partners);
+	$partners = mysqli_fetch_all($result_partners, MYSQLI_ASSOC);
+	$quantity_partners = count($partners);
+
+	
+	/* Контакты */
+	$query_contacts = 'SELECT * FROM contacts';
+	$result_contacts = mysqli_query($link, $query_contacts);
+	$contacts = mysqli_fetch_all($result_contacts, MYSQLI_ASSOC);
+	$quantity_contacts = count($contacts);
+
+
+	/* Специальности */
+	$query_speciality = 'SELECT * FROM speciality';
+	$result_speciality = mysqli_query($link, $query_speciality);
+	$speciality = mysqli_fetch_all($result_speciality, MYSQLI_ASSOC);
+	$quantity_speciality = count($speciality);
+
+
+	/* Пользователи */
+	$query_users = 'SELECT * FROM users';
+	$result_users = mysqli_query($link, $query_users);
+	$users = mysqli_fetch_all($result_users, MYSQLI_ASSOC);
+?>
