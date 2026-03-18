@@ -64,14 +64,26 @@
                 update_error("Пароли не совпадают");
             }
 
+            $hashed_pass = password_hash($new_pass, PASSWORD_DEFAULT);
+            if ($hashed_pass === false) {
+                update_error("Ошибка хеширования пароля");
+            }
+
             $query = "INSERT INTO users (login, password) VALUES (?, ?)";
             $stmt = mysqli_prepare($link, $query);
             
             if ($stmt) {
-                mysqli_stmt_bind_param($stmt, "ss", $_POST['login'], $_POST['password']);
+                mysqli_stmt_bind_param($stmt, "ss", $new_login, $hashed_pass);
                 
                 if (mysqli_stmt_execute($stmt)) {
-                    header("Location: " . $_SERVER['PHP_SELF'] . $query_params . "&success=1");
+                    $target = $_SERVER['SCRIPT_NAME'] ?: '/index.php';
+                    $redirect = $target;
+                    if ($query_params === '') {
+                        $redirect .= '?success=1';
+                    } else {
+                        $redirect .= $query_params . '&success=1';
+                    }
+                    header("Location: " . $redirect);
                     exit(); 
                 }
                 mysqli_stmt_close($stmt);
@@ -116,11 +128,15 @@
             if ($result && mysqli_num_rows($result) > 0) {
                 $user = mysqli_fetch_assoc($result);
 
-                if ($user_pass === $user['password']) { 
+                if (password_verify($user_pass, $user['password'])) {
                     $_SESSION['user_name'] = $user['login'];
                     $_SESSION['auth_success'] = true;
-                    
-                    header('Location: login.php') . $query_params;
+
+                    $login_redirect = 'login.php';
+                    if ($query_params !== '') {
+                        $login_redirect .= $query_params;
+                    }
+                    header('Location: ' . $login_redirect);
                     exit;
                 } else {
                     $_SESSION['error'] = "Неверный пароль или логин!";
